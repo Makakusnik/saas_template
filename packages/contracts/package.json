@@ -1,0 +1,46 @@
+{
+  "name": "TODO_project_name",
+  "version": "0.0.1",
+  "description": "TODO_description",
+  "keywords": [
+    "TODO_add_keyword"
+  ],
+  "author": {
+    "name": "TODO_add_author_name",
+    "email": "TODO_add_author_email",
+    "url": "TODO_add_author_web"
+  },
+  "license": "TODO_add_license",
+  "homepage": "TODO_add_project_homepage",
+  "repository": {
+    "type": "git",
+    "url": "TODO_add_project_repository_url"
+  },
+  "private": "TODO_add_private_status",
+  "packageManager": "pnpm@10.8.1",
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "pnpm clean && tsup --config tsup.config.ts --tsconfig tsconfig.build.json",
+    "dev": "pnpm build --watch"
+  },
+  "dependencies": {
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ]
+}

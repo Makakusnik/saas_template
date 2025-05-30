@@ -1,0 +1,24 @@
+{
+  "name": "TODO_project_name",
+  "version": "0.0.1",
+  "description": "TODO_description",
+  "keywords": [
+    "TODO_add_keyword"
+  ],
+  "author": {
+    "name": "TODO_add_author_name",
+    "email": "TODO_add_author_email",
+    "url": "TODO_add_author_web"
+  },
+  "license": "TODO_add_license",
+  "homepage": "TODO_add_project_homepage",
+  "repository": {
+    "type": "git",
+    "url": "TODO_add_project_repository_url"
+  },
+  "private": "TODO_add_private_status",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev"
+  },
+  "packageManager": "pnpm@10.8.1"
+}

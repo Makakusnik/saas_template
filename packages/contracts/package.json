@@ -1,0 +1,32 @@
+{
+  "name": "TODO_project_name",
+  "version": "0.0.1",
+  "license": "TODO_add_license",
+  "private": "TODO_add_private_status",
+  "packageManager": "pnpm@10.8.1",
+  "type": "module",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "pnpm clean && tsup --config tsup.config.ts --tsconfig tsconfig.build.json",
+    "dev": "pnpm build --watch"
+  },
+  "dependencies": {
+    "zod": "^3.24.3"
+  },
+  "devDependencies": {
+    "tsup": "^8.4.0"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ]
+}

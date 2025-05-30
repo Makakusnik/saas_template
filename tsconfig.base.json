@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@TODO_add_package_name/contracts": ["packages/contracts/src/index.ts"],
+      "@TODO_add_package_name/contracts/*": ["packages/contracts/src/*"]
+    }
+  },
+  "references": [
+    {
+      "path": "./packages/contracts"
+    }
+  ]
+}

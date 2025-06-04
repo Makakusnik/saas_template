@@ -1,0 +1,53 @@
+services:
+  backend:
+    container_name: ${BACKEND_CONTAINER_NAME:-be_container}
+    build:
+      context: .
+      dockerfile: ./apps/backend/Dockerfile
+    ports:
+      - "3001:3001"
+    env_file:
+      - .env.development
+      - ./apps/backend/.env.development
+    volumes:
+      - ./apps/backend:/app/apps/backend
+      - ./packages/contracts:/app/packages/contracts
+      - backend-node_modules:/app/apps/backend/node_modules
+      - pnpm-global-store:/pnpm/store
+    depends_on:
+      - db
+
+  frontend:
+    container_name: ${FRONTEND_CONTAINER_NAME:-fe_container}
+    build:
+      context: .
+      dockerfile: ./apps/frontend-web/Dockerfile
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env.development
+      - ./apps/frontend-web/.env.development
+    volumes:
+      - ./apps/frontend-web:/app/apps/frontend-web
+      - ./packages/contracts:/app/packages/contracts
+      - frontend-node_modules:/app/apps/frontend-web/node_modules
+      - pnpm-global-store:/pnpm/store
+    depends_on:
+      - backend
+
+  db:
+    container_name: ${POSTGRES_CONTAINER_NAME:-db_container}
+    image: postgres:17-alpine
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env.development
+      - ./apps/backend/.env.development
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+volumes:
+  db-data:
+  backend-node_modules:
+  frontend-node_modules:
+  pnpm-global-store:

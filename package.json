@@ -18,7 +18,20 @@
   },
   "private": "TODO_add_private_status",
   "scripts": {
-    "dev": "pnpm -r --parallel dev"
+    "dev": "pnpm -r --parallel dev",
+    "dev:build": "docker compose -f docker-compose.yml --env-file .env.development build",
+    "dev:start": "docker compose -f docker-compose.yml --env-file .env.development up -d ",
+    "dev:stop": "docker compose -f docker-compose.yml down",
+    "dev:remove": "docker compose -f docker-compose.yml down -v --rmi all",
+    "dev:be:connect": "dotenv -e .env.development -- sh -c 'docker exec -it \"${BACKEND_CONTAINER_NAME:-be_container}\" /bin/sh'",
+    "dev:db:connect": "dotenv -e .env.development -- sh -c 'docker exec -it \"${POSTGRES_CONTAINER_NAME:-db_container}\" /bin/sh'",
+    "dev:fe:connect": "dotenv -e .env.development -- sh -c 'docker exec -it \"${FRONTEND_CONTAINER_NAME:-fe_container}\" /bin/sh'",
+    "dev:be:logs": "dotenv -e .env.development -- sh -c 'docker logs \"${BACKEND_CONTAINER_NAME:-be_container}\" -f'",
+    "dev:db:logs": "dotenv -e .env.development -- sh -c 'docker legs \"${POSTGRES_CONTAINER_NAME:-db_container}\" -f'",
+    "dev:fe:logs": "dotenv -e .env.development -- sh -c 'docker legs \"${FRONTEND_CONTAINER_NAME:-fe_container}\" -f'"
   },
-  "packageManager": "pnpm@10.8.1"
+  "packageManager": "pnpm@10.8.1",
+  "dependencies": {
+    "dotenv-cli": "^8.0.0"
+  }
 }

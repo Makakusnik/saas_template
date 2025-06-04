@@ -5,9 +5,9 @@
   "private": "TODO_add_private_status",
   "packageManager": "pnpm@10.8.1",
   "scripts": {
-    "dev": "next dev -p 8000",
+    "dev": "dotenv -e .env.development -- sh -c 'next dev -p \"${NEXT_PORT:-3000}\"'",
     "build": "next build",
-    "start": "next start -p 8000",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -28,6 +28,7 @@
     "zustand": "^5.0.3"
   },
   "devDependencies": {
+    "dotenv-cli": "^8.0.0",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@tanstack/eslint-plugin-query": "^5.73.3",

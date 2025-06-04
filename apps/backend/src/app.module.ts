@@ -43,6 +43,6 @@ import { PoliciesGuard } from '@authorization/guards/policies/policies.guard';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(SessionMiddleware).forRoutes('*');
+    consumer.apply(SessionMiddleware).forRoutes('*path');
   }
 }
